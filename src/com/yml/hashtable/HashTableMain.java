@@ -16,6 +16,10 @@ public class HashTableMain {
 			myLinkedHashMap.add(string, value);
 		}
 		System.out.println(myLinkedHashMap);
+		String word = "paranoid";
+		int frequency = myLinkedHashMap.get(word) == null ? 0: myLinkedHashMap.get(word);
+		System.out.println("Frequency of word "+word+ " is : "+frequency);
+
 
 	}
 
