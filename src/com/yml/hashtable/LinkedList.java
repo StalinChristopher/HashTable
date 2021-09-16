@@ -34,13 +34,41 @@ public class LinkedList <K> {
 	 */
 	public INode<K> search(K Key) {
 		INode<K> tempNode = head;
-		while(tempNode != null && tempNode.getNext() != null) {
+		while(tempNode != null) {
 			if (tempNode.getKey().equals(Key)){
 				return tempNode;
 			}
 			tempNode = tempNode.getNext();
 		}
 		return null;
+	}
+	
+	public boolean remove(INode<K> node) {
+		INode<K> tempNode = head;
+		INode<K> prev = null;
+		boolean isFound = false;
+		if(tempNode != null && tempNode.getKey() == node.getKey()) {
+			head = tempNode.getNext();
+			return true;
+			
+		}
+		while(tempNode != null) {
+			if(tempNode.getKey().equals(node.getKey())) {
+				isFound = true;
+				break;
+			}
+			prev = tempNode;
+			tempNode = tempNode.getNext();
+		}
+		if(isFound) {
+			prev.setNext(tempNode.getNext());
+			System.out.println("Element deleted from the linkedList");
+			return isFound;
+		}
+		else {
+			System.out.println("Not found");
+			return isFound;
+		}
 	}
 	
 	
