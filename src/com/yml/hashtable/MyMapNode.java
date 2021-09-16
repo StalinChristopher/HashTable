@@ -1,5 +1,13 @@
 package com.yml.hashtable;
 
+/**
+ * @author Stalin Christopher
+ *
+ * @param <K>
+ * @param <V>
+ * This class defines a map node used for HashMap. It implements the INode interface and hence implements
+ * methods of INode
+ */
 public class MyMapNode <K,V> implements INode<K> {
 
 	K key;

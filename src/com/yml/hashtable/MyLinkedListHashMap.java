@@ -1,6 +1,15 @@
 package com.yml.hashtable;
 import java.util.*;
 
+/**
+ * @author Stalin Christopher
+ *
+ * @param <K>
+ * @param <V>
+ * This is a custom implementation of the linkedHashMap where an array list of type linkedList is present and key value 
+ * pairs are added into the arrayList based on the bucketIndex and append the pair to the linkedList present in
+ * that index
+ */
 public class MyLinkedListHashMap<K,V> {
 	
 	private final int numOfBuckets;
@@ -14,12 +23,23 @@ public class MyLinkedListHashMap<K,V> {
 		}
 	}
 
+	/**
+	 * @param key
+	 * @return
+	 * This method calculates the hashCode and divides it by the no of buckets and returns a index for the arrayList
+	 */
 	private int getBucketIndex(K key) {
 		int hashCode = Math.abs(key.hashCode());
 		int index = hashCode % numOfBuckets;
 		return index;
 	}
 
+	/**
+	 * @param key
+	 * @param value
+	 * This method adds the key value pair into the arrayList by finding the index of the arrayList and then
+	 * appending the pair into the linkedList present in that index
+	 */
 	public void add(K key, V value) {
 		int index=this.getBucketIndex(key); 
 		LinkedList<K> linkedList = this.bucketArray.get(index);
@@ -38,6 +58,11 @@ public class MyLinkedListHashMap<K,V> {
 		}
 	}
 
+	/**
+	 * @param key
+	 * @return
+	 * This method returns the value of the given key if it is present in the LinkedHashMap
+	 */
 	public V get(K key) {
 		int index = this.getBucketIndex(key);
 		LinkedList<K> linkedList = this.bucketArray.get(index);
